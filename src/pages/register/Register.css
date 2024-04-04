@@ -1,0 +1,69 @@
+.Register {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffe9ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.RegisterWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.RegisterBox {
+  height: 300px;
+  width: 400px;
+  background-color: white;
+  border-radius: 50px;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 3px 7px 13px -10px #b985c3;
+}
+
+.RegisterDesc {
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.RegisterInput {
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.LoginButton {
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1968c3;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 30px;
+}
+.RegisterLoginButton {
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: #d65a21;
+  color: white;
+  font-size: 20px;
+  font-weight: 50;
+  cursor: pointer;
+  margin-top: 10px;
+}

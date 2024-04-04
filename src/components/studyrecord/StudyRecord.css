@@ -1,0 +1,8 @@
+.studyrecord {
+  flex: 6;
+  height: 100vh;
+}
+
+.studyrecordWrapper {
+  padding: 20px;
+}
