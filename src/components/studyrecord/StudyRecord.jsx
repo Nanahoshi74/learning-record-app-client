@@ -1,9 +1,10 @@
 import React from "react";
 import "./StudyRecord.css";
 import { StudyDates } from "../../dummyData";
+import EditHome from "../edithome/EditHome";
+import ShowRecord from "../showrecord/ShowRecord";
 
 const StudyRecord = () => {
-  console.log(StudyDates);
   return (
     <div className="studyrecord">
       <div className="studyrecordWrapper">
@@ -13,14 +14,7 @@ const StudyRecord = () => {
           </span>
         </div>
         <div className="studyrecordCenter">
-          {StudyDates[0]["photo"] ? (
-            <img src="assets/graph/1.jpeg" alt="" className="graphImg" />
-          ) : (
-            <div className="notexistImgMsg">画像がありません</div>
-          )}
-        </div>
-        <div className="studyrecordbottom">
-          
+          <EditHome />
         </div>
       </div>
     </div>

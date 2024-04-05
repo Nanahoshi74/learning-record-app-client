@@ -1,8 +1,34 @@
 .studyrecord {
-  flex: 6;
+  flex: 9;
   height: 100vh;
+  width: 100%;
 }
 
 .studyrecordWrapper {
+  /* display: flex; */
   padding: 20px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  /* margin-bottom: 20px; */
 }
+
+.studyrecordTop {
+  align-items: center;
+  justify-content: center;
+}
+
+.studyrecordMessage {
+  font-size: 25px;
+  font-weight: 30px;
+  color: #157545;
+}
+
+.studyrecordCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+

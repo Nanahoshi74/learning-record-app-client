@@ -1,0 +1,61 @@
+.edithome {
+	width: 100%;
+	align-items: center;
+	/* margin: 30px 0; */
+}
+
+.edithomeWrapper {
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+	/* padding: 20px; */
+}
+
+.editform { 
+	height: 30px;
+  width: 900px;
+  background-color: bisque;
+  border-radius: 20px;
+  /* display: flex; */
+	margin-bottom: 20px;
+  padding: 20px;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 3px 7px 13px -10px #b985c3;
+}
+
+.editinput {
+	height: 30px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  padding-left: 20px;
+  margin-bottom: 15px;
+	margin-left: 10px;
+}
+
+.addbutton {
+	height: 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: #D179A5;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+	margin-left: 5px;
+}
+
+.showrecord {
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.subjectname {
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}

@@ -23,4 +23,10 @@ export const StudyDates = [
     photo: "/graph/2.jpeg",
     record: { 社会: 10, 国語: 1 },
   },
+  {
+    id: 5,
+    date: "2024年10月4日",
+    photo: "/graph/3.jpeg",
+    record: null,
+  },
 ];
