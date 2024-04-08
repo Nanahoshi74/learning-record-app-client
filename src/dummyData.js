@@ -13,19 +13,19 @@ export const StudyDates = [
   },
   {
     id: 3,
-    date: "2024年10月4日",
+    date: "2024年6月4日",
     photo: null,
     record: { 社会: 10, 国語: 1 },
   },
   {
     id: 4,
-    date: "2024年10月4日",
+    date: "2024年9月4日",
     photo: "/graph/2.jpeg",
     record: { 社会: 10, 国語: 1 },
   },
   {
     id: 5,
-    date: "2024年10月4日",
+    date: "2024年1月4日",
     photo: "/graph/3.jpeg",
     record: null,
   },

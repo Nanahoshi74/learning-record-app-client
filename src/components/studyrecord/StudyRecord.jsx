@@ -1,8 +1,6 @@
 import React from "react";
 import "./StudyRecord.css";
-import { StudyDates } from "../../dummyData";
 import EditHome from "../edithome/EditHome";
-import ShowRecord from "../showrecord/ShowRecord";
 
 const StudyRecord = () => {
   return (

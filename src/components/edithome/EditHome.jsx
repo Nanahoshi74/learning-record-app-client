@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./EditHome.css";
-import { StudyDates } from "../../dummyData";
 import ShowRecord from "../showrecord/ShowRecord";
-
-const showrecord = (recordObj) => {
-  return Object.keys(recordObj).map((item) => (
-    <>
-      <span className="subjectname">{item}</span>
-      <span className="studytime">{recordObj[item]}</span>
-    </>
-  ));
-};
+import axios from "axios";
 
 const EditHome = () => {
+  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const [records, setRecords] = useState([]);
+
+  useEffect(() => {
+    const fetchRecords = async () => {
+      const response = await axios.get("/records/6612704e79a27d113b2c1165");
+      // console.log(response.data);
+      setRecords(response.data);
+    };
+    fetchRecords();
+  }, []);
+
   return (
     <div className="edithome">
       <div className="edithomeWrapper">
@@ -32,14 +36,26 @@ const EditHome = () => {
           <button className="addbutton">追加</button>
           <button className="addbutton">グラフを作成する</button>
         </form>
-        {StudyDates[0]["photo"] ? (
-          <img src="/assets/graph/1.jpeg" alt="" />
+        {records["graph"] ? (
+          <img src={PUBLIC_FOLDER + "/graph/1.jpeg"} alt="" />
         ) : (
           <div>表示する画像がありません</div>
         )}
-        {Object.keys(StudyDates[0]["record"]).map((item) => (
-          <ShowRecord item={item} time={StudyDates[0]["record"][item]} />
-        ))}
+        {/* {Object.keys(records["studyTime"]).map((item) => (
+          <ShowRecord item={item} time={records["studyTime"][item]} />
+        ))} */}
+        {records && records["studyTime"] ? (
+          Object.keys(records["studyTime"]).map((item) => (
+            <ShowRecord
+              key={item}
+              item={item}
+              time={records["studyTime"][item]}
+              id={records._id}
+            />
+          ))
+        ) : (
+          <div>表示するデータがありません</div>
+        )}
       </div>
     </div>
   );
