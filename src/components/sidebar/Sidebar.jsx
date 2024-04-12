@@ -1,28 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Sidebar.css";
 import StudyDate from "../studydate/StudyDate";
 import axios from "axios";
+import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../../state/AuthContext";
 
 const Sidebar = () => {
   const [records, setRecords] = useState([]);
+  const { user } = useContext(AuthContext);
+
+  // const username = useParams().username;
 
   useEffect(() => {
     const fetchRecords = async () => {
-      const response = await axios.get("/records/all/test_user1");
+      // const response = await axios.get(`/records/all/${username}`);
+
+      const pas = {
+        password: user.password,
+      };
+
+      const response = await axios.get(`/records/all/${user.username}`, pas);
       console.log(response.data);
       setRecords(response.data);
     };
     fetchRecords();
-  }, []);
+  }, [user.username, user]);
 
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
         <div className="sidebar">
           <div className="sidebarWrapper">
-            {records.map((studydate) => (
-              <StudyDate studydate={studydate} key={studydate.id} />
-            ))}
+            {records ? (
+              records.map((studydate) => (
+                <StudyDate
+                  studydate={studydate}
+                  key={studydate.id}
+                  username={user.username} // コメントアウトしていた部分を修正
+                />
+              ))
+            ) : (
+              <div>記録がありません</div>
+            )}
           </div>
         </div>
       </div>

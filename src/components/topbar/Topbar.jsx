@@ -1,10 +1,13 @@
 import React from "react";
 import "./Topbar.css";
+import { useParams } from "react-router-dom";
 
 const Topbar = () => {
+  const date = useParams().date;
+
   return (
     <div className="topbarContainer">
-      <span className="topbarCenter">4月4日の記録</span>
+      <span className="topbarCenter">{date}の記録</span>
     </div>
   );
 };
