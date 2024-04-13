@@ -21,7 +21,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path={`/:date`} element={user ? <Home /> : <Register />} />
+        {/* <Route path={`/:date`} element={user ? <Home /> : <Register />} />
         <Route
           path="/login"
           element={user ? <Navigate to={`/` + getTodayDate()} /> : <Login />}
@@ -29,6 +29,22 @@ function App() {
         <Route
           path="/register"
           element={user ? <Navigate to="/" /> : <Register />}
+        /> */}
+        <Route
+          path="/"
+          element={user ? <Navigate to={`/${getTodayDate()}`} /> : <Register />}
+        />
+        <Route
+          path={`/:date`}
+          element={user ? <Home /> : <Navigate to="/register" />}
+        />
+        <Route
+          path="/login"
+          element={user ? <Navigate to={`/${getTodayDate()}`} /> : <Login />}
+        />
+        <Route
+          path="/register"
+          element={user ? <Navigate to={`/${getTodayDate()}`} /> : <Register />}
         />
       </Routes>
     </Router>

@@ -1,4 +1,5 @@
-.studydate {
+.studydate a {
+  display: block;
   width: 100%;
   box-shadow: 0px 3px 16px -5px #6a61ae;
   border-radius: 10px;
@@ -8,14 +9,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.studydate:hover {
-  box-shadow: none;
-  transform: translateY(5px);
-  background-color: #84BFFF
+  padding: 10px;
 }
 
 .studydateWrapper {
-  padding: 10px;
+  /* padding: 1px; */
+}
+.studydate a:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+  background-color: #84bfff;
 }

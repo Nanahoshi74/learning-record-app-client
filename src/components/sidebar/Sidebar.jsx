@@ -13,14 +13,9 @@ const Sidebar = () => {
 
   useEffect(() => {
     const fetchRecords = async () => {
-      // const response = await axios.get(`/records/all/${username}`);
-
-      const pas = {
-        password: user.password,
-      };
-
-      const response = await axios.get(`/records/all/${user.username}`, pas);
-      console.log(response.data);
+      const response = await axios.get(
+        `/records/all/?username=${user.username}&password=${user.password}`
+      );
       setRecords(response.data);
     };
     fetchRecords();
