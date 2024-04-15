@@ -5,13 +5,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { loginCall } from "../../dispatch";
 import { AuthContext } from "../../state/AuthContext";
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Register = () => {
   const username = useRef();
   const password = useRef();
   const confirmpassword = useRef();
   const { dispatch } = useContext(AuthContext);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const navigate = useNavigate();
 

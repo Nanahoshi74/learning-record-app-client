@@ -6,10 +6,10 @@ import { AuthContext } from "../../state/AuthContext";
 import { Chart } from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import StudyDate from "../studydate/StudyDate";
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const EditHome = ({ selectedDate, records, setItemRecords }) => {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const [loading, setLoading] = useState(false);
 

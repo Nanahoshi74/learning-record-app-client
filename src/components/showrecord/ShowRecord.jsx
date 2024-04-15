@@ -2,12 +2,12 @@ import React, { useContext, useState } from "react";
 import "./ShowRecord.css";
 import { AuthContext } from "../../state/AuthContext";
 import axios from "axios";
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const ShowRecord = ({ item, time, selectedDate }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTime, setEditableTime] = useState(time);
   const { user } = useContext(AuthContext);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const handleEditClick = () => {
     setIsEditing(true);

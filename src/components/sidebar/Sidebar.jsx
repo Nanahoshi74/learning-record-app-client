@@ -3,11 +3,11 @@ import "./Sidebar.css";
 import StudyDate from "../studydate/StudyDate";
 import axios from "axios";
 import { AuthContext } from "../../state/AuthContext";
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Sidebar = ({ onDateSelect }) => {
   const [records, setRecords] = useState([]);
   const { user } = useContext(AuthContext);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     const fetchRecords = async () => {
