@@ -2,7 +2,7 @@ import React from "react";
 import "./StudyDate.css";
 import { Link } from "react-router-dom";
 
-const StudyDate = ({ studydate, username, onDateSelect }) => {
+const StudyDate = ({ studydate, onDateSelect }) => {
   const handleClick = () => {
     onDateSelect(studydate.date);
   };

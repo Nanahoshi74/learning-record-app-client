@@ -2,14 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Sidebar.css";
 import StudyDate from "../studydate/StudyDate";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../state/AuthContext";
 
 const Sidebar = ({ onDateSelect }) => {
   const [records, setRecords] = useState([]);
   const { user } = useContext(AuthContext);
-
-  // const username = useParams().username;
 
   useEffect(() => {
     const fetchRecords = async () => {
@@ -31,7 +28,7 @@ const Sidebar = ({ onDateSelect }) => {
                 <StudyDate
                   studydate={studydate}
                   key={studydate.id}
-                  username={user.username} // コメントアウトしていた部分を修正
+                  username={user.username}
                   onDateSelect={onDateSelect}
                 />
               ))

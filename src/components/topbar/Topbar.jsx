@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
 import "./Topbar.css";
-import { AuthContext } from "../../state/AuthContext";
 
 const getTodayDate = () => {
   const today = new Date();
@@ -11,9 +9,7 @@ const getTodayDate = () => {
   return `${year}-${month}-${day}`;
 };
 
-const Topbar = ({ selectedDate, onDateSelect, records, setItemRecords }) => {
-  const { user } = useContext(AuthContext);
-
+const Topbar = ({ selectedDate, onDateSelect, setItemRecords }) => {
   const handleclick = (e) => {
     onDateSelect(getTodayDate());
     window.location.reload();

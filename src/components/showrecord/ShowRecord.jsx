@@ -3,7 +3,7 @@ import "./ShowRecord.css";
 import { AuthContext } from "../../state/AuthContext";
 import axios from "axios";
 
-const ShowRecord = ({ item, time, selectedDate, createGraph }) => {
+const ShowRecord = ({ item, time, selectedDate }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTime, setEditableTime] = useState(time);
   const { user } = useContext(AuthContext);
@@ -26,7 +26,6 @@ const ShowRecord = ({ item, time, selectedDate, createGraph }) => {
     );
     setIsEditing(false);
     window.location.reload();
-    // createGraph();
   };
   return (
     <div className="showrecord">

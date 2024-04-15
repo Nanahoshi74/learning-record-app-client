@@ -2,17 +2,12 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import "./EditHome.css";
 import ShowRecord from "../showrecord/ShowRecord";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import { AuthContext } from "../../state/AuthContext";
 import { Chart } from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 const EditHome = ({ selectedDate, records, setItemRecords }) => {
-  // console.log(selectedDate);
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
-
-  // const [records, setRecords] = useState({});
-  console.log(records);
 
   const [loading, setLoading] = useState(false);
 
@@ -31,7 +26,6 @@ const EditHome = ({ selectedDate, records, setItemRecords }) => {
         const response = await axios.get(
           `/records/record/${selectedDate}/?username=${user.username}&password=${user.password}`
         );
-        // console.log(response.data);
         if (response.data) setItemRecords(response.data);
         if (!response.data) {
           const body = {
@@ -63,7 +57,6 @@ const EditHome = ({ selectedDate, records, setItemRecords }) => {
         subject_time: subject_time.current.value,
       };
 
-      // console.log(addstudy);
       const res = await axios.put(
         `/records/add/${selectedDate}/?username=${user.username}&password=${user.password}`,
         addstudy
@@ -84,7 +77,6 @@ const EditHome = ({ selectedDate, records, setItemRecords }) => {
       chart.destroy();
     }
     if (records && records["studyTime"]) {
-      // const ctx = chartRef.current.getContext("2d");
       const studyTimeData = records["studyTime"];
       const labels = Object.keys(studyTimeData);
       const data = Object.values(studyTimeData);

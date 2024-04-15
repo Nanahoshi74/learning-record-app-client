@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./Register.css";
 import { useRef } from "react";
 import axios from "axios";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { loginCall } from "../../dispatch";
 import { AuthContext } from "../../state/AuthContext";
 
@@ -75,6 +75,7 @@ const Register = () => {
         <button className="LoginButton" onClick={(e) => navigate("/login")}>
           ログインはこちら
         </button>
+        <div className="hashmes">パスワードはハッシュ化されます</div>
         <div className="copywriteregister">©2024 Nanahoshi74</div>
       </div>
     </div>
