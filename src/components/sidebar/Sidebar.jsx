@@ -13,10 +13,11 @@ const Sidebar = ({ onDateSelect }) => {
       const response = await axios.get(
         `/records/all/?username=${user.username}&password=${user.password}`
       );
+      console.log(response.data);
       setRecords(response.data);
     };
     fetchRecords();
-  }, [user]);
+  }, []);
 
   return (
     <div className="sidebar">

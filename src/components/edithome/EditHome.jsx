@@ -5,6 +5,7 @@ import axios from "axios";
 import { AuthContext } from "../../state/AuthContext";
 import { Chart } from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import StudyDate from "../studydate/StudyDate";
 
 const EditHome = ({ selectedDate, records, setItemRecords }) => {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -21,28 +22,32 @@ const EditHome = ({ selectedDate, records, setItemRecords }) => {
   useEffect(() => {
     const fetchRecords = async () => {
       console.log(user);
+      console.log(records);
       try {
         setLoading(true);
         const response = await axios.get(
           `/records/record/${selectedDate}/?username=${user.username}&password=${user.password}`
         );
         if (response.data) setItemRecords(response.data);
-        if (!response.data) {
-          const body = {
-            userId: user._id,
-            date: selectedDate,
-            studyTime: {},
-          };
+        // if (!response.data) {
+        //   const body = {
+        //     userId: user._id,
+        //     date: selectedDate,
+        //     studyTime: {},
+        //   };
 
-          const res = await axios.post(`/records`, body);
-          setItemRecords(res.data);
-        }
+        //   const res = await axios.post(
+        //     `/records/?username=${user.username}&password=${user.password}`,
+        //     body
+        //   );
+        //   setItemRecords(res.data);
+        // }
       } finally {
         setLoading(false);
       }
     };
     fetchRecords();
-  }, [user, selectedDate]);
+  }, [user, StudyDate]);
 
   useEffect(() => {
     createGraph();
@@ -57,11 +62,12 @@ const EditHome = ({ selectedDate, records, setItemRecords }) => {
         subject_time: subject_time.current.value,
       };
 
+      //追加ボタン押したときに変更加える
       const res = await axios.put(
         `/records/add/${selectedDate}/?username=${user.username}&password=${user.password}`,
         addstudy
       );
-      setItemRecords(res.data);
+      if (!res.data) setItemRecords(res.data);
       subject.current.value = "";
       subject_time.current.value = "";
       window.location.reload();
