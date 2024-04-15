@@ -6,6 +6,7 @@ import { AuthContext } from "../../state/AuthContext";
 import { Chart } from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import StudyDate from "../studydate/StudyDate";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const EditHome = ({ selectedDate, records, setItemRecords }) => {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -24,7 +25,7 @@ const EditHome = ({ selectedDate, records, setItemRecords }) => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `/records/record/${selectedDate}/?username=${user.username}&password=${user.password}`
+          `${backendUrl}/records/record/${selectedDate}/?username=${user.username}&password=${user.password}`
         );
         if (response.data) setItemRecords(response.data);
       } finally {
@@ -49,7 +50,7 @@ const EditHome = ({ selectedDate, records, setItemRecords }) => {
 
       //追加ボタン押したときに変更加える
       const res = await axios.put(
-        `/records/add/${selectedDate}/?username=${user.username}&password=${user.password}`,
+        `${backendUrl}/records/add/${selectedDate}/?username=${user.username}&password=${user.password}`,
         addstudy
       );
       if (!res.data) setItemRecords(res.data);

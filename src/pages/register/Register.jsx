@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { loginCall } from "../../dispatch";
 import { AuthContext } from "../../state/AuthContext";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Register = () => {
   const username = useRef();
@@ -25,7 +26,10 @@ const Register = () => {
           username: username.current.value,
           password: password.current.value,
         };
-        const login_user = await axios.post("/auth/register", user);
+        const login_user = await axios.post(
+          `${backendUrl}/auth/register`,
+          user
+        );
         if (login_user.data === "exist") {
           alert("そのユーザ名は既に使われています");
         } else {

@@ -3,6 +3,7 @@ import "./Sidebar.css";
 import StudyDate from "../studydate/StudyDate";
 import axios from "axios";
 import { AuthContext } from "../../state/AuthContext";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Sidebar = ({ onDateSelect }) => {
   const [records, setRecords] = useState([]);
@@ -11,7 +12,7 @@ const Sidebar = ({ onDateSelect }) => {
   useEffect(() => {
     const fetchRecords = async () => {
       const response = await axios.get(
-        `/records/all/?username=${user.username}&password=${user.password}`
+        `${backendUrl}/records/all/?username=${user.username}&password=${user.password}`
       );
       setRecords(response.data);
     };

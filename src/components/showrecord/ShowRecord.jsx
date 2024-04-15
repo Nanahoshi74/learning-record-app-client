@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./ShowRecord.css";
 import { AuthContext } from "../../state/AuthContext";
 import axios from "axios";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const ShowRecord = ({ item, time, selectedDate }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -18,7 +19,7 @@ const ShowRecord = ({ item, time, selectedDate }) => {
 
   const handleSubmit = async () => {
     await axios.put(
-      `/records/add/${selectedDate}/?username=${user.username}&password=${user.password}`,
+      `${backendUrl}/records/add/${selectedDate}/?username=${user.username}&password=${user.password}`,
       {
         subject: item,
         subject_time: editedTime,
