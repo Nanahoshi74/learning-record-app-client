@@ -13,8 +13,6 @@ const Register = () => {
   const { dispatch } = useContext(AuthContext);
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-  console.log(`${backendUrl}/auth/register`);
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
