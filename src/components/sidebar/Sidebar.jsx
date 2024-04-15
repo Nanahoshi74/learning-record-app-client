@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../state/AuthContext";
 
-const Sidebar = () => {
+const Sidebar = ({ onDateSelect }) => {
   const [records, setRecords] = useState([]);
   const { user } = useContext(AuthContext);
 
@@ -19,7 +19,7 @@ const Sidebar = () => {
       setRecords(response.data);
     };
     fetchRecords();
-  }, [user.username, user]);
+  }, [user]);
 
   return (
     <div className="sidebar">
@@ -32,6 +32,7 @@ const Sidebar = () => {
                   studydate={studydate}
                   key={studydate.id}
                   username={user.username} // コメントアウトしていた部分を修正
+                  onDateSelect={onDateSelect}
                 />
               ))
             ) : (

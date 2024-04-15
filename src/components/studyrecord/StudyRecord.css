@@ -22,6 +22,7 @@
   font-size: 25px;
   font-weight: 30px;
   color: #157545;
+  padding-left: 30px;
 }
 
 .studyrecordCenter {
@@ -30,5 +31,3 @@
   align-items: center;
   justify-content: center;
 }
-
-

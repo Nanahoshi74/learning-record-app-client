@@ -2,16 +2,17 @@ import React, { useContext, useRef } from "react";
 import "./Login.css";
 import { loginCall } from "../../dispatch";
 import { AuthContext } from "../../state/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const username = useRef();
   const password = useRef();
-  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const { dispatch } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(email.current.value);
-    // console.log(password.current.value);
     loginCall(
       {
         username: username.current.value,
@@ -20,8 +21,6 @@ const Login = () => {
       dispatch
     );
   };
-
-  console.log(user);
 
   return (
     <div className="login">
@@ -44,7 +43,13 @@ const Login = () => {
           ></input>
           <button className="loginButton">ログイン</button>
         </form>
-        <button className="loginRegisterButton">アカウント作成はこちら</button>
+        <button
+          className="loginRegisterButton"
+          onClick={(e) => navigate("/register")}
+        >
+          アカウント作成はこちら
+        </button>
+        <div className="copywritelogin">©2024 Nanahoshi74</div>
       </div>
     </div>
   );

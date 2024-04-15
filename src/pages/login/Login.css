@@ -9,64 +9,79 @@
 
 .loginWrapper {
   display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .loginBox {
   height: 300px;
-	width: 400px;
+  width: 400px;
   background-color: white;
   border-radius: 50px;
   display: flex;
-	padding: 20px;
+  padding: 20px;
   flex-direction: column;
   justify-content: center;
   box-shadow: 3px 7px 13px -10px #b985c3;
 }
 
 .loginDesc {
-	font-size: 25px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-bottom: 10px;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
 }
 
 .loginInput {
-	height: 40px;
-	border-radius: 10px;
-	border: 1px solid gray;
-	font-size: 18px;
-	font-weight: 500;
-	cursor: pointer;
-	padding-left: 20px;
-	margin-bottom: 15px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  padding-left: 20px;
+  margin-bottom: 15px;
 }
 
 .loginButton {
-	height: 40px;
-	border-radius: 10px;
-	border: none;
-	background-color: #1968C3;
-	color: white;
-	font-size: 20px;
-	font-weight: 500;
-	cursor: pointer;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1968c3;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
 }
+
+.loginButton:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+  background-color: #3dd32f;
+}
+
 .loginRegisterButton {
-	height: 40px;
-	border-radius: 10px;
-	border: none;
-	background-color: #D65A21;
-	color: white;
-	font-size: 20px;
-	font-weight: 500;
-	cursor: pointer;
-	margin-top: 30px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: #d65a21;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 30px;
 }
 
+.loginRegisterButton:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+  background-color: #e789ac;
+}
 
-
-
+.copywritelogin {
+  margin-top: 100px;
+  font-size: 14px;
+  color: #555;
+}

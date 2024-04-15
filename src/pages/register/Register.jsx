@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Register.css";
 import { useRef } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
+import { loginCall } from "../../dispatch";
+import { AuthContext } from "../../state/AuthContext";
 
 const Register = () => {
   const username = useRef();
   const password = useRef();
   const confirmpassword = useRef();
+  const { dispatch } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -22,8 +25,18 @@ const Register = () => {
           username: username.current.value,
           password: password.current.value,
         };
-        await axios.post("/auth/register", user);
-        navigate("/login");
+        const login_user = await axios.post("/auth/register", user);
+        if (login_user.data === "exist") {
+          alert("そのユーザ名は既に使われています");
+        } else {
+          loginCall(
+            {
+              username: username.current.value,
+              password: password.current.value,
+            },
+            dispatch
+          );
+        }
       } catch (err) {
         console.log(err);
       }
@@ -59,7 +72,10 @@ const Register = () => {
             新規登録
           </button>
         </form>
-        <button className="LoginButton">ログインはこちら</button>
+        <button className="LoginButton" onClick={(e) => navigate("/login")}>
+          ログインはこちら
+        </button>
+        <div className="copywriteregister">©2024 Nanahoshi74</div>
       </div>
     </div>
   );

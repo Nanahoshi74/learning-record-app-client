@@ -9,42 +9,17 @@ import { Navigate } from "react-router-dom";
 function App() {
   const { user } = useContext(AuthContext);
 
-  const getTodayDate = () => {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
-
-    return `${year}-${month}-${day}`;
-  };
-
   return (
     <Router>
       <Routes>
-        {/* <Route path={`/:date`} element={user ? <Home /> : <Register />} />
+        <Route path="/" element={user ? <Home /> : <Register />} />
         <Route
           path="/login"
-          element={user ? <Navigate to={`/` + getTodayDate()} /> : <Login />}
+          element={user ? <Navigate to={"/"} /> : <Login />}
         />
         <Route
           path="/register"
-          element={user ? <Navigate to="/" /> : <Register />}
-        /> */}
-        <Route
-          path="/"
-          element={user ? <Navigate to={`/${getTodayDate()}`} /> : <Register />}
-        />
-        <Route
-          path={`/:date`}
-          element={user ? <Home /> : <Navigate to="/register" />}
-        />
-        <Route
-          path="/login"
-          element={user ? <Navigate to={`/${getTodayDate()}`} /> : <Login />}
-        />
-        <Route
-          path="/register"
-          element={user ? <Navigate to={`/${getTodayDate()}`} /> : <Register />}
+          element={user ? <Navigate to={"/"} /> : <Register />}
         />
       </Routes>
     </Router>
