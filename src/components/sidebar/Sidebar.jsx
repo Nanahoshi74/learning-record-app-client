@@ -13,7 +13,6 @@ const Sidebar = ({ onDateSelect }) => {
       const response = await axios.get(
         `/records/all/?username=${user.username}&password=${user.password}`
       );
-      console.log(response.data);
       setRecords(response.data);
     };
     fetchRecords();
@@ -28,7 +27,7 @@ const Sidebar = ({ onDateSelect }) => {
               records.map((studydate) => (
                 <StudyDate
                   studydate={studydate}
-                  key={studydate.id}
+                  key={studydate._id}
                   username={user.username}
                   onDateSelect={onDateSelect}
                 />

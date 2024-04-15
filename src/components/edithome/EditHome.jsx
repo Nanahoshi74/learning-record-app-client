@@ -21,27 +21,12 @@ const EditHome = ({ selectedDate, records, setItemRecords }) => {
 
   useEffect(() => {
     const fetchRecords = async () => {
-      console.log(user);
-      console.log(records);
       try {
         setLoading(true);
         const response = await axios.get(
           `/records/record/${selectedDate}/?username=${user.username}&password=${user.password}`
         );
         if (response.data) setItemRecords(response.data);
-        // if (!response.data) {
-        //   const body = {
-        //     userId: user._id,
-        //     date: selectedDate,
-        //     studyTime: {},
-        //   };
-
-        //   const res = await axios.post(
-        //     `/records/?username=${user.username}&password=${user.password}`,
-        //     body
-        //   );
-        //   setItemRecords(res.data);
-        // }
       } finally {
         setLoading(false);
       }
