@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const StudyDate = ({ studydate, onDateSelect }) => {
   const handleClick = () => {
     onDateSelect(studydate.date);
+    window.location.reload();
   };
 
   return (
