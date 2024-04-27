@@ -5,13 +5,15 @@ import Register from "./pages/register/Register";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthContext } from "./state/AuthContext";
 import { Navigate } from "react-router-dom";
+import Maintenance from "./components/maintenance/Maintenance";
 
 function App() {
   const { user } = useContext(AuthContext);
 
   return (
     <Router>
-      <Routes>
+      <Maintenance />
+      {/* <Routes>
         <Route path="/" element={user ? <Home /> : <Register />} />
         <Route
           path="/login"
@@ -21,7 +23,7 @@ function App() {
           path="/register"
           element={user ? <Navigate to={"/"} /> : <Register />}
         />
-      </Routes>
+      </Routes> */}
     </Router>
   );
 }
