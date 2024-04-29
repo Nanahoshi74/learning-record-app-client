@@ -1,0 +1,10 @@
+.statistics {
+  flex: 10;
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+}
+
+.schedule {
+  margin: 60px;
+}
