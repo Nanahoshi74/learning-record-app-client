@@ -23,6 +23,6 @@ export const StartPageSidebarData = [
   {
     title: "使い方(未実装)",
     icon: <LocalLibraryIcon />,
-    link: "/select",
+    link: "/",
   },
 ];
