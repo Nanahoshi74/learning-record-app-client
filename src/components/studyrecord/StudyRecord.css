@@ -29,3 +29,12 @@
   align-items: center;
   justify-content: center;
 }
+
+.invaliddate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+  font-weight: 900;
+  color: red;
+}

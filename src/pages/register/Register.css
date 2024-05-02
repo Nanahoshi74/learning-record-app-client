@@ -1,7 +1,7 @@
 .Register {
   width: 100vw;
   height: 100vh;
-  background-color: #ffe9ea;
+  background-color: #2d445d;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,11 +83,11 @@
 .copywriteregister {
   margin-top: 50px;
   font-size: 14px;
-  color: #555;
+  color: white;
 }
 
 .hashmes {
   margin-top: 20px;
   font-size: 14px;
-  color: #555;
+  color: white;
 }

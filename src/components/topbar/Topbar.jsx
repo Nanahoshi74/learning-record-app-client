@@ -1,36 +1,40 @@
+import { useNavigate, useParams } from "react-router-dom";
 import "./Topbar.css";
 
-const getTodayDate = () => {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
-};
-
-const Topbar = ({ selectedDate, onDateSelect, setItemRecords }) => {
-  const handleclick = (e) => {
-    onDateSelect(getTodayDate());
-    window.location.reload();
-  };
-
+const Topbar = () => {
+  const navigate = useNavigate();
   const handlelogout = (e) => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("selectedDate");
-    setItemRecords(null);
-    window.location.reload();
+    navigate(`/select`);
+    return;
   };
+
+  const formatDateString = (inputDate) => {
+    let date = new Date(inputDate);
+
+    let month = (date.getMonth() + 1).toString();
+    let day = date.getDate().toString();
+
+    if (month.length === 1) {
+      month = month.slice(-1);
+    }
+    if (day.length === 1) {
+      day = day.slice(-1);
+    }
+
+    // YYYY年M月D日の形式で日付を返す
+    return date.getFullYear() + " 年 " + month + " 月 " + day + " 日 ";
+  };
+
+  const selectedDate = useParams().date;
 
   return (
     <div className="topbarContainer">
-      <button className="logout" onClick={(e) => handlelogout(e)}>
-        ログアウトする
+      <button className="backhome" onClick={(e) => handlelogout(e)}>
+        ホームに戻る
       </button>
-      <span className="topbarCenter">{selectedDate}の記録</span>
-      <button className="createtodayrecord" onClick={(e) => handleclick(e)}>
-        今日の記録を作成する
-      </button>
+      <span className="topbarCenter">
+        {formatDateString(selectedDate)}の記録
+      </span>
     </div>
   );
 };

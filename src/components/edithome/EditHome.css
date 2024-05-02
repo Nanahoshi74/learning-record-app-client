@@ -15,7 +15,7 @@
 .editform {
   height: 30px;
   width: 100%;
-  background-color: bisque;
+  background-color: #2d445d;
   border-radius: 20px;
   /* display: flex; */
   margin-bottom: 20px;
@@ -42,7 +42,7 @@
   height: 30px;
   border-radius: 10px;
   border: none;
-  background-color: #d179a5;
+  background-color: #7aaedd;
   color: white;
   font-size: 20px;
   font-weight: 500;
@@ -61,7 +61,7 @@
   height: 30px;
   border-radius: 10px;
   border: none;
-  background-color: #d179a5;
+  background-color: #7aaedd;
   color: white;
   font-size: 20px;
   font-weight: 500;
@@ -91,6 +91,7 @@
   font-size: 20px;
   padding: 10px;
   font-weight: 900;
+  color: white;
 }
 
 .loading {

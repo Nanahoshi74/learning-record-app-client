@@ -1,0 +1,40 @@
+.recordcalendar {
+  height: auto;
+  width: auto;
+  flex: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* margin-bottom: 800px; */
+  padding-top: 20px;
+  flex-direction: column;
+  background-color: #f4f0ff;
+}
+
+.dateText {
+  font-size: large;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.dateGroup {
+  display: flex;
+  align-items: center;
+}
+
+.calendar {
+  /* transform: scale(1.9); */
+  margin-right: 20px; /* カレンダーの右マージンを追加 */
+}
+
+.confirm {
+}
+
+.confirm-button {
+  width: 200px;
+  height: 30px;
+  font-size: large;
+  background-color: #3b627a;
+  color: white;
+  border-radius: 20px;
+}

@@ -1,5 +1,5 @@
 .topbarContainer {
-  background-color: #c2f7e8;
+  background-color: #2d445d;
   height: 80px;
   width: 100%;
   display: flex;
@@ -12,35 +12,17 @@
 .topbarCenter {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   flex: 6;
   font-size: 25px;
   font-weight: bold;
-  color: #000a00;
-}
-
-.createtodayrecord {
-  height: 30px;
-  border-radius: 10px;
-  border: none;
-  background-color: #d179a5;
   color: white;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-right: 90px;
+  padding-right: 170px;
 }
 
-.createtodayrecord:hover {
-  box-shadow: none;
-  transform: translateY(5px);
-  background-color: #26e057;
-}
-
-.logout {
+.backhome {
   border-radius: 10px;
   border: none;
-  background-color: #d179a5;
+  background-color: #7aaedd;
   color: white;
   font-size: 20px;
   font-weight: 500;
@@ -48,7 +30,7 @@
   margin-left: 10px;
   margin-right: 20px;
 }
-.logout:hover {
+.backhome:hover {
   box-shadow: none;
   transform: translateY(5px);
   background-color: #26e057;
