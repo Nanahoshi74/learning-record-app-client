@@ -8,20 +8,15 @@ const StudyRecord = ({ records, setItemRecords }) => {
   const isValidDate = (dateString) => {
     const regex = /^\d{4}-\d{2}-\d{2}$/;
     if (!regex.test(dateString)) return false;
-    let today = new Date();
-    today.toLocaleDateString("ja-JP", {
-      timeZone: "Asia/Tokyo",
-    });
+    const today = new Date();
+    today.setHours(9, 0, 0, 0); // 時間を9時に設定
 
-    let date = new Date(dateString);
-    date.toLocaleString("ja-JP", {
-      timeZone: "Asia/Tokyo",
-    });
+    const date = new Date(dateString);
 
-    console.log(today.getDate());
-    console.log(date.getDate());
+    console.log(date);
+    console.log(today);
 
-    if (date.getDate() > today.getDate()) {
+    if (date > today) {
       return false;
     }
     return !isNaN(date.getTime());
