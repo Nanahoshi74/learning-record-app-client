@@ -3,6 +3,7 @@
   display: flex;
   /* align-items: center; */
   flex-direction: column;
+  background-color: #f4f0ff;
 }
 
 .schedule {

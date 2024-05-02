@@ -4,36 +4,64 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./Calendar.css";
 import ja from "date-fns/locale/ja";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 //日本語化
 registerLocale("ja", ja);
 
-const Calendar = () => {
+const Calendar = ({ selectedDate, setSelectedDate }) => {
   const initialDate = new Date();
-  const [selectedDate, setStartDate] = useState(initialDate);
-
-  //指定できる日付は31日後まで
+  const startDate = new Date(initialDate);
+  startDate.setDate(startDate.getDate() - 3650);
+  const [calendardate, setCalendarDate] = useState(initialDate);
   const endDate = new Date(initialDate);
-  endDate.setDate(endDate.getDate() + 31);
+  endDate.setDate(endDate.getDate());
 
-  console.log("startDate = " + selectedDate);
-  console.log("endDate = " + endDate);
+  const navigate = useNavigate();
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+
+    const year = date.getFullYear();
+    const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    const day = ("0" + date.getDate()).slice(-2);
+
+    return `${year}-${month}-${day}`;
+  };
+
   const handleChange = (date) => {
-    setStartDate(date);
+    setCalendarDate(date);
+  };
+
+  const handleconfirmbutton = (e) => {
+    if (calendardate === undefined) return;
+    navigate(`/record/${formatDate(calendardate)}`);
   };
 
   return (
     <div className={"recordcalendar"}>
-      <p className="dateText">日付:</p>
-      <div className="calendar">
-        <DatePicker
-          locale="ja"
-          selected={selectedDate}
-          dateFormatCalendar="yyyy年 MM月"
-          dateFormat="yyyy/MM/dd"
-          onChange={handleChange}
-          minDate={initialDate}
-          maxDate={endDate}
-        />
+      <div className="dateGroup">
+        <p className="dateText">日付:</p>
+        <div className="calendar">
+          <DatePicker
+            locale="ja"
+            selected={calendardate}
+            dateFormatCalendar="yyyy年 MM月"
+            dateFormat="yyyy/MM/dd"
+            onChange={handleChange}
+            minDate={startDate}
+            maxDate={endDate}
+          />
+        </div>
+        <div className="confirm">
+          <button
+            className="confirm-button"
+            onClick={(e) => {
+              handleconfirmbutton(e);
+            }}
+          >
+            記録の作成・確認
+          </button>
+        </div>
       </div>
     </div>
   );

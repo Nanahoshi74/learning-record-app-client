@@ -6,14 +6,17 @@ import { AuthContext } from "../../state/AuthContext";
 import { Chart } from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import StudyDate from "../studydate/StudyDate";
+import { useParams } from "react-router-dom";
 
-const EditHome = ({ selectedDate, records, setItemRecords }) => {
+const EditHome = ({ records, setItemRecords, err }) => {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const [loading, setLoading] = useState(false);
 
   const { user } = useContext(AuthContext);
+
+  const selectedDate = useParams().date;
 
   const subject = useRef();
   const subject_time = useRef();
@@ -33,7 +36,7 @@ const EditHome = ({ selectedDate, records, setItemRecords }) => {
       }
     };
     fetchRecords();
-  }, [user, StudyDate]);
+  }, [user]);
 
   useEffect(() => {
     createGraph();
@@ -133,55 +136,71 @@ const EditHome = ({ selectedDate, records, setItemRecords }) => {
 
   return (
     <div className="edithome">
-      <div className="edithomeWrapper">
-        <form action="" className="editform" onSubmit={(e) => createSubmit(e)}>
-          <input
-            type="text"
-            className="editinput"
-            required
-            placeholder="ex: 数学"
-            ref={subject}
-          />
-          <input
-            type="number"
-            className="editinput"
-            required
-            placeholder="ex: 2"
-            min={1}
-            ref={subject_time}
-          />
-          <span className="timetext">時間</span>
-          <button className="addbutton" type="submit" onSubmit={createGraph}>
-            追加
-          </button>
-          <button className="createbutton" type="button" onClick={createGraph}>
-            グラフを再生成する
-          </button>
-        </form>
-        <div className="imgWrapper">
-          <canvas ref={chartRef}></canvas>
-          {records ? (
-            <></>
+      {err ? (
+        <div>日付が有効ではありません</div>
+      ) : (
+        <div className="edithomeWrapper">
+          <form
+            action=""
+            className="editform"
+            onSubmit={(e) => createSubmit(e)}
+          >
+            <input
+              type="text"
+              className="editinput"
+              required
+              placeholder="ex: 数学"
+              ref={subject}
+            />
+            <input
+              type="number"
+              className="editinput"
+              required
+              placeholder="ex: 2"
+              min={1}
+              ref={subject_time}
+            />
+            <span className="timetext">時間</span>
+            <button className="addbutton" type="submit" onSubmit={createGraph}>
+              追加
+            </button>
+            <button
+              className="createbutton"
+              type="button"
+              onClick={createGraph}
+            >
+              グラフを再生成する
+            </button>
+          </form>
+          <div className="imgWrapper">
+            <canvas ref={chartRef}></canvas>
+            {records ? (
+              <></>
+            ) : (
+              <img
+                src={PUBLIC_FOLDER + "/loading.jpg"}
+                alt=""
+                className="img"
+              />
+            )}
+          </div>
+          {loading && <span className="loading">取得中...</span>}
+          {records && records["studyTime"] ? (
+            Object.keys(records["studyTime"]).map((item) => (
+              <ShowRecord
+                key={item}
+                item={item}
+                time={records["studyTime"][item]}
+                id={records._id}
+                selectedDate={selectedDate}
+                createGraph={createGraph}
+              />
+            ))
           ) : (
-            <img src={PUBLIC_FOLDER + "/loading.jpg"} alt="" className="img" />
+            <div>表示するデータがありません。データを追加して下さい。</div>
           )}
         </div>
-        {loading && <span className="loading">取得中...</span>}
-        {records && records["studyTime"] ? (
-          Object.keys(records["studyTime"]).map((item) => (
-            <ShowRecord
-              key={item}
-              item={item}
-              time={records["studyTime"][item]}
-              id={records._id}
-              selectedDate={selectedDate}
-              createGraph={createGraph}
-            />
-          ))
-        ) : (
-          <div>表示するデータがありません。データを追加して下さい。</div>
-        )}
-      </div>
+      )}
       <div className="copywrite">©2024 Nanahoshi74</div>
     </div>
   );

@@ -4,7 +4,7 @@ import "./StartPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Statistics from "../statistics/Statistics";
 
-const StartPage = () => {
+const StartPage = ({ selectedDate, setSelectedDate }) => {
   const mode = useParams().mode;
 
   const navigate = useNavigate();
@@ -24,7 +24,12 @@ const StartPage = () => {
     <div>
       <div className="startpage">
         <StartPageSidebar />
-        {mode === "select" && <Calendar />}
+        {mode === "select" && (
+          <Calendar
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
+        )}
         {mode === "statistics" && <Statistics />}
       </div>
     </div>

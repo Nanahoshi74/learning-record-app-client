@@ -8,7 +8,6 @@ const StartPageSidebar = () => {
     <div className="startpagesidebar">
       <ul className="startpagesidebarlist">
         {StartPageSidebarData.map((value, key) => {
-          console.log(value.link);
           return (
             <li
               key={key}
