@@ -36,7 +36,7 @@ const Calendar = () => {
       pre_dates.push(new Date(formatDate(date)));
     });
     setDates(pre_dates);
-  }, [dates, studydates]);
+  }, [studydates]);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
