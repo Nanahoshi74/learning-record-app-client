@@ -1,11 +1,12 @@
 .recordcalendar {
   height: auto;
   max-width: 90%;
-  width: 100%;
+  align-items: center;
+  /* width: 100%; */
   flex: 10;
   display: flex;
   padding-top: 150px;
-  padding-left: 170px;
+  /* margin: 190px; */
   flex-direction: column;
   background-color: #f4f0ff;
 }
